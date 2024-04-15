@@ -28,4 +28,15 @@ public class BoundedPriorityQueue extends LinkedList {
         }
         return super.get(0);
     }
+
+    public Appointment element(){
+        if (isEmpty()){
+            throw new IllegalStateException("Queue is empty.");
+        }
+        return super.get(0);
+    }
+
+    public Appointment remove(){
+        return super.remove(0);
+    }
 }
