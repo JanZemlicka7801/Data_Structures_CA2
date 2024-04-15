@@ -141,4 +141,20 @@ public class Patient {
     public int hashCode() {
         return Objects.hash(getfName(), getlName(), getDateOfBirth());
     }
+
+    /**
+     * Convert inserted values for patient into a well-formatted text.
+     *
+     * @return Well-formatted text.
+     */
+    @Override
+    public String toString() {
+        return "objects.Patient{" +
+                "fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", joinDate=" + joinDate +
+                ", appointmentLinkedList=" + appointmentLinkedList +
+                '}';
+    }
 }
