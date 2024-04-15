@@ -28,6 +28,19 @@ public class LinkedList {
         size = 0;
     }
 
+    //add a single appointment
+    public boolean add(Appointment toAdd){
+        Node newNode = new Node(toAdd);
+        if(isEmpty()){
+            head = newNode;
+            tail = newNode;
+        }else{
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+        size++;
+        return true;
+    }
 
     protected static class Node{
         private Appointment data;
