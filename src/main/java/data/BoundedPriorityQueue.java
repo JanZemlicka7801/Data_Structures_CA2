@@ -39,4 +39,20 @@ public class BoundedPriorityQueue extends LinkedList {
     public Appointment remove(){
         return super.remove(0);
     }
+
+    public boolean add(Appointment toAdd){
+        if (!isValidAppointment(toAdd)){
+            throw new IllegalArgumentException("objects.Appointment with " + toAdd.getDocName() + " is not possible to add.");
+        }
+
+        if (super.size() >= max){
+            throw new IllegalArgumentException("Queue is full.");
+        }
+
+        return super.add(toAdd);
+    }
+
+    private boolean isValidAppointment(Appointment appointment){
+        return appointment.getDocName().equalsIgnoreCase(doctorName);
+    }
 }
