@@ -13,4 +13,12 @@ public class BoundedPriorityQueue extends LinkedList {
         this.doctorName = doctorName;
     }
 
+    public Appointment poll(){
+        if (isEmpty()){
+            return null;
+        }
+        Appointment head = super.get(0);
+        super.remove(0);
+        return head;
+    }
 }
