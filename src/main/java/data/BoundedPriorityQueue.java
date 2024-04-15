@@ -13,6 +13,11 @@ public class BoundedPriorityQueue extends LinkedList {
         this.doctorName = doctorName;
     }
 
+    //Checks if the queue is full
+    public boolean isFull(){
+        return size() == max;
+    }
+
     public Appointment poll(){
         if (isEmpty()){
             return null;
