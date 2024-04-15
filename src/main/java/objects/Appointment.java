@@ -33,4 +33,131 @@ public class Appointment {
         this.triage = triage;
         this.docName = docName;
     }
+
+    /**
+     * Retrieves patient's first name.
+     *
+     * @return The first name of patient.
+     */
+    public String getpFname() {
+        return pFname;
+    }
+
+    /**
+     * Sets patient's first name.
+     *
+     * @param pFname Name to set patient's first name to.
+     */
+    public void setpFname(String pFname) {
+        this.pFname = pFname;
+    }
+
+    /**
+     * Retrieves patient's last name.
+     *
+     * @return The last name of a patient.
+     */
+    public String getpLname() {
+        return pLname;
+    }
+
+    /**
+     * Sets patient's last name.
+     *
+     * @param pLname Last name to be set.
+     */
+    public void setpLname(String pLname) {
+        this.pLname = pLname;
+    }
+
+    /**
+     * Retrieves patient's date of birth.
+     *
+     * @return objects.Patient's date of birth.
+     */
+    public LocalDate getpDateOfBirth() {
+        return pDateOfBirth;
+    }
+
+    /**
+     * Sets date of patient's birth.
+     *
+     * @param pDateOfBirth Date to be set.
+     */
+    public void setpDateOfBirth(LocalDate pDateOfBirth) {
+        this.pDateOfBirth = pDateOfBirth;
+    }
+
+    /**
+     * Retrieves a problem that patient is coming to a doctor with.
+     *
+     * @return An issue of patient.
+     */
+    public String getIssue() {
+        return issue;
+    }
+
+    /**
+     * Sets an issue of patient.
+     *
+     * @param issue Issue of patient.
+     */
+    public void setIssue(String issue) {
+        this.issue = issue;
+    }
+
+    /**
+     * Retrieves a date of an appointment.
+     *
+     * @return A date of an appointment.
+     */
+    public LocalDate getDate() {
+        return date;
+    }
+
+    /**
+     * Sets a date of an appointment.
+     *
+     * @param date Date to be set.
+     */
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    /**
+     * Retrieves triage of an appointment.
+     *
+     * @return Returns a triage.
+     */
+    public int getTriage() {
+        return triage;
+    }
+
+    /**
+     * Sets a value for triage of an appointment.
+     *
+     * @param triage The triage to be set.
+     */
+
+    public void setTriage(int triage) {
+        this.triage = triage;
+    }
+
+    /**
+     * Retrieves the name of a doctor.
+     *
+     * @return The name of a doctor.
+     */
+    public String getDocName() {
+        return docName;
+    }
+
+    /**
+     * Sets the doctor's name.
+     *
+     * @param docName The name of a doctor to be set.
+     */
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
 }
