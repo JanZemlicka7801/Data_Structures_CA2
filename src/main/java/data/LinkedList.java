@@ -124,6 +124,13 @@ public class LinkedList {
         return current.getData();
     }
 
+    public Appointment tail(){
+        if(tail == null){
+            throw new IndexOutOfBoundsException("No data found in list");
+        }
+        return tail.getData();
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
