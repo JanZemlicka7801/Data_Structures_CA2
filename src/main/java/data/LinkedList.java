@@ -113,6 +113,17 @@ public class LinkedList {
         return -1;
     }
 
+    public Appointment get(int pos){
+        if(pos < 0 || pos >= size){
+            throw new IndexOutOfBoundsException("Illegal position supplied: " + pos);
+        }
+        Node current = head;
+        for(int i = 0; i < pos; i++){
+            current = current.getNext();
+        }
+        return current.getData();
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
