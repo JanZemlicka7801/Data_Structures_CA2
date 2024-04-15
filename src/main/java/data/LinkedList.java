@@ -76,6 +76,31 @@ public class LinkedList {
         return true;
     }
 
+    public Appointment remove(int pos){
+        Appointment removed;
+        if(pos == 0){
+            removed = head.getData();
+            head = head.getNext();
+            if (head == null) {
+                tail = null;
+            }
+        }
+        else {
+            Node current = head;
+            for(int i = 0; i < pos-1; i++) {
+                current = current.getNext();
+            }
+            removed = current.getNext().getData();
+            if (current.getNext() == tail)
+            {
+                tail = current;
+            }
+            current.setNext(current.getNext().getNext());
+        }
+        size--;
+        return removed;
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
