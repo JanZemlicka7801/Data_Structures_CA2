@@ -22,6 +22,13 @@ public class LinkedList {
         return size()==0;
     }
 
+    public void clear(){
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
+
     protected static class Node{
         private Appointment data;
         private Node next;
