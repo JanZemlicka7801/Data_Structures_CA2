@@ -118,4 +118,27 @@ public class Patient {
         this.appointmentLinkedList = appointmentLinkedList;
     }
 
+    /**
+     * Compares a patient to the specific object. The result is true if the
+     * argument is a objects.Patient object with the same values.
+     *
+     * @param o Object of instance objects.Patient which will be compared to a different objects.Patient.
+     * @return True if two objects are the same or not.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Patient patient)) return false;
+        return Objects.equals(getfName(), patient.getfName()) && Objects.equals(getlName(), patient.getlName()) && Objects.equals(getDateOfBirth(), patient.getDateOfBirth());
+    }
+
+    /**
+     * Calculates a hash code based on all provided information of the patient.
+     *
+     * @return The hash code for the patient.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getfName(), getlName(), getDateOfBirth());
+    }
 }
