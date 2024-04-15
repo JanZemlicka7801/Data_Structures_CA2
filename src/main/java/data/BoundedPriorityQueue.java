@@ -21,4 +21,11 @@ public class BoundedPriorityQueue extends LinkedList {
         super.remove(0);
         return head;
     }
+
+    public Appointment peek(){
+        if (isEmpty()){
+            return null;
+        }
+        return super.get(0);
+    }
 }
