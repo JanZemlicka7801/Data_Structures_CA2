@@ -15,7 +15,7 @@ public class BoundedPriorityQueue extends LinkedList {
 
     //Checks if the queue is full
     public boolean isFull(){
-        return size() == max;
+        return size() >= max;
     }
 
     public Appointment poll(){
@@ -29,9 +29,10 @@ public class BoundedPriorityQueue extends LinkedList {
 
     public Appointment peek(){
         if (isEmpty()){
-            return null;
+            throw new NullPointerException("Priority queue is empty");
+        } else {
+            return super.get(0);
         }
-        return super.get(0);
     }
 
     public Appointment element(){
@@ -47,10 +48,10 @@ public class BoundedPriorityQueue extends LinkedList {
 
     public boolean add(Appointment toAdd){
         if (!isValidAppointment(toAdd)){
-            throw new IllegalArgumentException("objects.Appointment with " + toAdd.getDocName() + " is not possible to add.");
+            throw new IllegalArgumentException("Appointment to be added is for different doctor: " + toAdd.getDocName() + ". Doctor for the queue: " + doctorName);
         }
 
-        if (super.size() >= max){
+        if (isFull()){
             throw new IllegalArgumentException("Queue is full.");
         }
 

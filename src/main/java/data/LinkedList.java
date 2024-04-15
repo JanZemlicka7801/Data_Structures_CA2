@@ -77,6 +77,11 @@ public class LinkedList {
     }
 
     public Appointment remove(int pos){
+
+        if(size == 0 || pos < 0 || pos >= size){
+            throw new IndexOutOfBoundsException();
+        }
+
         Appointment removed;
         if(pos == 0){
             removed = head.getData();
