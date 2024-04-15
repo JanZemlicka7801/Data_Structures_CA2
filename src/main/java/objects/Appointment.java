@@ -184,4 +184,22 @@ public class Appointment {
     public int hashCode() {
         return Objects.hash(getpFname(), getpLname(), getpDateOfBirth(), getIssue(), getDate(), getTriage(), getDocName());
     }
+
+    /**
+     * Convert value from entities to well-formatted text.
+     *
+     * @return Well-formatted text of values.
+     */
+    @Override
+    public String toString() {
+        return "objects.Appointment{" +
+                "pFname='" + pFname + '\'' +
+                ", pLname='" + pLname + '\'' +
+                ", pDateOfBirth=" + pDateOfBirth +
+                ", issue='" + issue + '\'' +
+                ", date=" + date +
+                ", triage=" + triage +
+                ", docName='" + docName + '\'' +
+                '}';
+    }
 }
