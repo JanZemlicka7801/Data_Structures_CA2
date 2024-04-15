@@ -160,4 +160,28 @@ public class Appointment {
     public void setDocName(String docName) {
         this.docName = docName;
     }
+
+    /**
+     * Compares an appointment to the specific object. The result is true if the
+     * argument is an objects.Appointment object with the same values.
+     *
+     * @param o Object of instance objects.Appointment which will be compared to a different objects.Appointment.
+     * @return True if two objects are the same or not.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Appointment that)) return false;
+        return getTriage() == that.getTriage() && Objects.equals(getpFname(), that.getpFname()) && Objects.equals(getpLname(), that.getpLname()) && Objects.equals(getpDateOfBirth(), that.getpDateOfBirth()) && Objects.equals(getIssue(), that.getIssue()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getDocName(), that.getDocName());
+    }
+
+    /**
+     * Calculates a hash code based on all provided information of the appointment.
+     *
+     * @return The hash code for the appointment.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getpFname(), getpLname(), getpDateOfBirth(), getIssue(), getDate(), getTriage(), getDocName());
+    }
 }
