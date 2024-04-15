@@ -29,6 +29,7 @@ public class LinkedList {
     }
 
     //add a single appointment
+    //maybe should create a method that would add an appointment on the correct position
     public boolean add(Appointment toAdd){
         Node newNode = new Node(toAdd);
         if(isEmpty()){
@@ -37,6 +38,21 @@ public class LinkedList {
         }else{
             tail.setNext(newNode);
             tail = newNode;
+        }
+        size++;
+        return true;
+    }
+
+    //adds appointment to the start
+    public boolean addToStart(Appointment toAdd){
+        Node newNode = new Node(toAdd);
+
+        if(head == null){
+            head = newNode;
+            tail = newNode;
+        }else{
+            newNode.setNext(head);
+            head = newNode;
         }
         size++;
         return true;
