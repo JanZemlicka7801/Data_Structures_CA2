@@ -18,6 +18,10 @@ public class LinkedList {
         return size;
     }
 
+    public boolean isEmpty(){
+        return size()==0;
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
