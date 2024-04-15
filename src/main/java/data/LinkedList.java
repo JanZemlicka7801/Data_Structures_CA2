@@ -58,6 +58,24 @@ public class LinkedList {
         return true;
     }
 
+    public boolean add(Appointment toAdd, int pos){
+        if(pos == 0){
+            addToStart(toAdd);
+        } else if (pos == size()) {
+            add(toAdd);
+        }else {
+            Node newNode = new Node(toAdd);
+            Node current = head;
+            for (int i = 0; i < pos; i++) {
+                current = current.getNext();
+            }
+            current.setNext(newNode);
+            newNode.setNext(current.getNext());
+            size++;
+        }
+        return true;
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
