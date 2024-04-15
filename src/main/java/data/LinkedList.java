@@ -14,6 +14,10 @@ public class LinkedList {
         size = 0;
     }
 
+    public int size(){
+        return size;
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
