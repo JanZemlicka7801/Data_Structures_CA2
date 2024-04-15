@@ -3,7 +3,7 @@ package objects;
 import java.time.*;
 import java.util.Objects;
 
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
     private String pFname;
     private String pLname;
     private LocalDate pDateOfBirth;
@@ -201,5 +201,20 @@ public class Appointment {
                 ", triage=" + triage +
                 ", docName='" + docName + '\'' +
                 '}';
+    }
+
+    /**
+     * Compares two appointments if they are not same based on triage, on date otherwise if they have same values for triage.
+     *
+     * @param another The object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Appointment another){
+        if (this.getTriage() != another.getTriage()){
+            return Integer.compare(another.getTriage(), this.getTriage());
+        } else {
+            return  this.getDate().compareTo(another.getDate());
+        }
     }
 }
