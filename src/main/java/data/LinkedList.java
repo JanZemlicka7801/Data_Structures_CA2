@@ -101,6 +101,18 @@ public class LinkedList {
         return removed;
     }
 
+    public int indexOf(Appointment appointment){
+        Node current = head;
+        for(int i = 0; i < size; i++){
+            Appointment currentData = current.getData();
+            if(currentData == appointment){
+                return i;
+            }
+            current = current.getNext();
+        }
+        return -1;
+    }
+
     protected static class Node{
         private Appointment data;
         private Node next;
