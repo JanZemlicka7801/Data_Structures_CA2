@@ -32,6 +32,7 @@ public class LinkedList {
     //maybe should create a method that would add an appointment on the correct position
     public boolean add(Appointment toAdd){
         Node newNode = new Node(toAdd);
+
         if(isEmpty()){
             head = newNode;
             tail = newNode;
@@ -47,7 +48,7 @@ public class LinkedList {
     public boolean addToStart(Appointment toAdd){
         Node newNode = new Node(toAdd);
 
-        if(head == null){
+        if(isEmpty()){
             head = newNode;
             tail = newNode;
         }else{
@@ -59,6 +60,10 @@ public class LinkedList {
     }
 
     public boolean add(Appointment toAdd, int pos){
+
+//        Validate position(index)
+        validatePosition(pos);
+
         if(pos == 0){
             addToStart(toAdd);
         } else if (pos == size()) {
@@ -69,8 +74,8 @@ public class LinkedList {
             for (int i = 0; i < pos; i++) {
                 current = current.getNext();
             }
-            current.setNext(newNode);
             newNode.setNext(current.getNext());
+            current.setNext(newNode);
             size++;
         }
         return true;
@@ -78,9 +83,8 @@ public class LinkedList {
 
     public Appointment remove(int pos){
 
-        if(size == 0 || pos < 0 || pos >= size){
-            throw new IndexOutOfBoundsException();
-        }
+//        Validate position(index)
+        validatePosition(pos);
 
         Appointment removed;
         if(pos == 0){
@@ -110,7 +114,7 @@ public class LinkedList {
         Node current = head;
         for(int i = 0; i < size; i++){
             Appointment currentData = current.getData();
-            if(currentData == appointment){
+            if(currentData.equals(appointment)){
                 return i;
             }
             current = current.getNext();
@@ -119,9 +123,10 @@ public class LinkedList {
     }
 
     public Appointment get(int pos){
-        if(pos < 0 || pos >= size){
-            throw new IndexOutOfBoundsException("Illegal position supplied: " + pos);
-        }
+
+//        Validate position(index)
+        validatePosition(pos);
+
         Node current = head;
         for(int i = 0; i < pos; i++){
             current = current.getNext();
@@ -134,6 +139,18 @@ public class LinkedList {
             throw new IndexOutOfBoundsException("No data found in list");
         }
         return tail.getData();
+    }
+
+    /**
+     * Helper internal method to validate index of element to be removed/added
+     * @param pos index to check
+     * @return boolean indicating success of validation
+     */
+    private boolean validatePosition(int pos){
+        if(size == 0 || pos < 0 || pos >= size){
+            throw new IndexOutOfBoundsException();
+        }
+        return true;
     }
 
     protected static class Node{
@@ -170,5 +187,6 @@ public class LinkedList {
         public void setPrevious(Node previous) {
             this.previous = previous;
         }
+
     }
 }
