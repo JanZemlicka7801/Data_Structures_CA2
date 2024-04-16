@@ -4,9 +4,9 @@ import objects.Appointment;
 
 public class LinkedList {
 
-    private Node head;
-    private Node tail;
-    private int size;
+    protected Node head;
+    protected Node tail;
+    protected int size;
 
     public LinkedList(){
         head = null;
@@ -61,8 +61,10 @@ public class LinkedList {
 
     public boolean add(Appointment toAdd, int pos){
 
-//        Validate position(index)
-        validatePosition(pos);
+//        Validate add position(index)
+        if(pos < 0 || pos > size){
+            throw new IndexOutOfBoundsException();
+        }
 
         if(pos == 0){
             addToStart(toAdd);
@@ -83,8 +85,8 @@ public class LinkedList {
 
     public Appointment remove(int pos){
 
-//        Validate position(index)
-        validatePosition(pos);
+//        Validate remove position(index)
+        validateRemoveGet(pos);
 
         Appointment removed;
         if(pos == 0){
@@ -110,6 +112,7 @@ public class LinkedList {
         return removed;
     }
 
+
     public int indexOf(Appointment appointment){
         Node current = head;
         for(int i = 0; i < size; i++){
@@ -125,7 +128,7 @@ public class LinkedList {
     public Appointment get(int pos){
 
 //        Validate position(index)
-        validatePosition(pos);
+        validateRemoveGet(pos);
 
         Node current = head;
         for(int i = 0; i < pos; i++){
@@ -135,22 +138,20 @@ public class LinkedList {
     }
 
     public Appointment tail(){
-        if(tail == null){
+        if(tail == null){ //Same as empty list
             throw new IndexOutOfBoundsException("No data found in list");
         }
         return tail.getData();
     }
 
     /**
-     * Helper internal method to validate index of element to be removed/added
-     * @param pos index to check
-     * @return boolean indicating success of validation
+     * Internal helper method to validate position to get/remove element in a list
+     * @param pos position of element to get/be removed
      */
-    private boolean validatePosition(int pos){
+    private void validateRemoveGet(int pos) {
         if(size == 0 || pos < 0 || pos >= size){
             throw new IndexOutOfBoundsException();
         }
-        return true;
     }
 
     protected static class Node{

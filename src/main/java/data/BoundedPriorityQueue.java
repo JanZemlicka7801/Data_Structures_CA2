@@ -46,6 +46,8 @@ public class BoundedPriorityQueue extends LinkedList {
         return super.remove(0);
     }
 
+//    TODO - Check if algorithm for add() based on priority(triage) works correctly
+
     public boolean add(Appointment toAdd){
         if (!isValidAppointment(toAdd)){
             throw new IllegalArgumentException("Appointment to be added is for different doctor: " + toAdd.getDocName() + ". Doctor for the queue: " + doctorName);
@@ -55,9 +57,30 @@ public class BoundedPriorityQueue extends LinkedList {
             throw new IllegalArgumentException("Queue is full.");
         }
 
-        return super.add(toAdd);
+
+        Node current = head;
+        int pos = 0;
+
+        if (head.getData().compareTo(toAdd) <= 0){
+            super.addToStart(toAdd);
+        } else if (tail.getData().compareTo(toAdd) > 0) {
+            super.add(toAdd);
+        } else {
+            while (current.getNext() != null) {
+                if (current.getNext().getData().compareTo(toAdd) <= 0){
+                    super.add(toAdd, pos);
+                }
+                pos++;
+            }
+        }
+        return true;
     }
 
+    /**
+     * Internal helper method to check if doctor of the appointment to be added is the same as the doctor of the queue.
+     * @param appointment Appointment to be added.
+     * @return boolean indicating success of validation.
+     */
     private boolean isValidAppointment(Appointment appointment){
         return appointment.getDocName().equalsIgnoreCase(doctorName);
     }
