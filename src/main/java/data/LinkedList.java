@@ -73,7 +73,7 @@ public class LinkedList {
         }else {
             Node newNode = new Node(toAdd);
             Node current = head;
-            for (int i = 0; i < pos; i++) {
+            for (int i = 0; i < pos-1; i++) {
                 current = current.getNext();
             }
             newNode.setNext(current.getNext());

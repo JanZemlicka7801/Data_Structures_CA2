@@ -77,13 +77,25 @@ class LinkedListTest {
 
 
         list.clear();
-//        Adding to middle of the list
+//        Adding to middle of the list with 2 elements
         list.add(appointment1);
         list.add(appointment3);
 
         assertTrue(list.add(appointment2, 1));
         assertEquals(3, list.size());
         assertEquals(appointment2, list.get(1));
+
+
+        list.clear();
+//        Adding to middle of the list with 3 elements
+        list.add(appointment1);
+        list.add(appointment3);
+        list.add(appointment3);
+
+        assertTrue(list.add(appointment2, 1));
+        assertEquals(4, list.size());
+        assertEquals(appointment2, list.get(1));
+
 
 
         list.clear();
