@@ -18,6 +18,10 @@ public class BoundedPriorityQueue extends LinkedList {
         return size() >= max;
     }
 
+    public int count(){
+        return super.size();
+    }
+
     public Appointment poll(){
         if (isEmpty()){
             return null;
@@ -35,11 +39,11 @@ public class BoundedPriorityQueue extends LinkedList {
         }
     }
 
-    public Appointment element(){
-        if (isEmpty()){
-            throw new IllegalStateException("Queue is empty.");
+    public boolean offer(Appointment toAdd){
+        if (isFull() || !isValidAppointment(toAdd)){
+            return false;
         }
-        return super.get(0);
+        return add(toAdd);
     }
 
     public Appointment remove(){
