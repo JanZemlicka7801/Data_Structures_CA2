@@ -15,7 +15,7 @@ public class BoundedPriorityQueue extends LinkedList {
 
     //Checks if the queue is full
     public boolean isFull(){
-        return size() >= max;
+        return super.size() == max;
     }
 
     public int count(){
@@ -33,7 +33,7 @@ public class BoundedPriorityQueue extends LinkedList {
 
     public Appointment peek(){
         if (isEmpty()){
-            throw new NullPointerException("Priority queue is empty");
+            throw new IllegalStateException("Priority queue is empty");
         } else {
             return super.get(0);
         }
@@ -53,15 +53,21 @@ public class BoundedPriorityQueue extends LinkedList {
 //    TODO - Check if algorithm for add() based on priority(triage) works correctly
 
     public boolean add(Appointment toAdd){
-        if (!isValidAppointment(toAdd)){
+        if (toAdd == null){
+            throw new NullPointerException("Cannot add a null Appointment");
+        }
+        else if (!isValidAppointment(toAdd)){
             throw new IllegalArgumentException("Appointment to be added is for different doctor: " + toAdd.getDocName() + ". Doctor for the queue: " + doctorName);
         }
-
-        if (isFull()){
-            throw new IllegalArgumentException("Queue is full.");
+        else if (isFull()){
+            throw new IllegalStateException("Queue is full.");
         }
 
-
+        if (isEmpty()){
+            super.add(toAdd);
+            return true;
+        }
+//       Iterating through the list and searching for appropriate position to insert element
         Node current = head;
         int pos = 0;
 
