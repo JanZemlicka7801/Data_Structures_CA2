@@ -2,10 +2,18 @@ package data;
 
 import objects.Appointment;
 
+
 public class BoundedPriorityQueue extends LinkedList {
 
     //means that we need to set a queue that will have specific length and also is sorted by priority of each object inside it
+    /**
+     * Maximum size of Queue.
+     */
     private final int max;
+
+    /**
+     * Name of the Doctor of the Queue. Appointments to be added has to match this Doctor's name.
+     */
     private final String doctorName;
 
     public BoundedPriorityQueue(int max, String doctorName) {
@@ -13,24 +21,48 @@ public class BoundedPriorityQueue extends LinkedList {
         this.doctorName = doctorName;
     }
 
-    //Checks if the queue is full
+    /**
+     * Checks if the queue is full. Checks if the queue has reached the maximum size of a set(maximum size is initialized in constructor).
+     * @return boolean indicating if a queue is full.
+     */
     public boolean isFull(){
         return super.size() == max;
     }
 
+    /**
+     * Gets the size of a queue.
+     * @return size(number) of a queue.
+     */
     public int count(){
         return super.size();
     }
 
+    /**
+     * Deletes and returns the first Appointment in a queue.
+     * @return deleted Appointment.
+     */
     public Appointment poll(){
         if (isEmpty()){
             return null;
         }
-        Appointment head = super.get(0);
-        super.remove(0);
-        return head;
+        return super.remove(0);
     }
 
+    /**
+     * Safe version of peek() method. Returns first element in a queue without deleting it OR null if a queue is empty.
+     * @return first Task object in a queue, if it's not empty.
+     */
+    public Appointment element(){
+        if (isEmpty()) {
+            return null;
+        }
+        return super.get(0);
+    }
+
+    /**
+     * "Get" method: returns first element in a queue without deleting it.
+     * @return first Task object in a queue, if it's not empty.
+     */
     public Appointment peek(){
         if (isEmpty()){
             throw new IllegalStateException("Priority queue is empty");
@@ -39,6 +71,11 @@ public class BoundedPriorityQueue extends LinkedList {
         }
     }
 
+    /**
+     * Safe version of add() method. Tries to add Task in a queue.
+     * @param toAdd Appointment to be added.
+     * @return false if a queue is empty or Appointment to be added contains invalid doctor's name, true otherwise
+     */
     public boolean offer(Appointment toAdd){
         if (isFull() || !isValidAppointment(toAdd)){
             return false;
@@ -46,12 +83,22 @@ public class BoundedPriorityQueue extends LinkedList {
         return add(toAdd);
     }
 
+
+    /**
+     * Removes and returns a first Appointment in the queue.
+     * @return removed Appointment.
+     */
     public Appointment remove(){
         return super.remove(0);
     }
 
 //    TODO - Check if algorithm for add() based on priority(triage) works correctly
 
+    /**
+     * Adds a Task in a queue based on priority(triage).
+     * @param toAdd Appointment to be added.
+     * @return boolean indicating success of action.
+     */
     public boolean add(Appointment toAdd){
         if (toAdd == null){
             throw new NullPointerException("Cannot add a null Appointment");

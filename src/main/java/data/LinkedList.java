@@ -14,22 +14,38 @@ public class LinkedList {
         size = 0;
     }
 
+    /**
+     * Gets the size of a LinkedList.
+     * @return size(number) of a List.
+     */
     public int size(){
         return size;
     }
 
+    /**
+     * Checks if a List is empty.
+     * @return true if a List is empty, false otherwise.
+     */
     public boolean isEmpty(){
         return size()==0;
     }
 
+    /**
+     * Resets a List.
+     */
     public void clear(){
         head = null;
         tail = null;
         size = 0;
     }
 
-    //add a single appointment
+
     //maybe should create a method that would add an appointment on the correct position
+    /**
+     * Adds Appointment to the end of a List.
+     * @param toAdd Appointment to be added.
+     * @return boolean indicating success of action.
+     */
     public boolean add(Appointment toAdd){
         Node newNode = new Node(toAdd);
 
@@ -44,7 +60,12 @@ public class LinkedList {
         return true;
     }
 
-    //adds appointment to the start
+
+    /**
+     * Adds Appointment to the start of a List.
+     * @param toAdd Appointment to be added.
+     * @return boolean indicating success of action.
+     */
     public boolean addToStart(Appointment toAdd){
         Node newNode = new Node(toAdd);
 
@@ -59,6 +80,12 @@ public class LinkedList {
         return true;
     }
 
+    /**
+     * Adds Appointment to the specified index(position).
+     * @param toAdd Appointment to add.
+     * @param pos position(index) to insert in/add to a List.
+     * @return boolean indicating success of action.
+     */
     public boolean add(Appointment toAdd, int pos){
 
 //        Validate add position(index)
@@ -83,10 +110,15 @@ public class LinkedList {
         return true;
     }
 
+    /**
+     * Removes Appointment from specified position(index).
+     * @param pos position(index) to remove Appointment from.
+     * @return removed Appointment.
+     */
     public Appointment remove(int pos){
 
 //        Validate remove position(index)
-        validateRemoveGet(pos);
+        validatePos(pos);
 
         Appointment removed;
         if(pos == 0){
@@ -112,7 +144,11 @@ public class LinkedList {
         return removed;
     }
 
-
+    /**
+     * Returns position of a specified Appointment.
+     * @param appointment Appointment to search in a List.
+     * @return index of Appointment if it was found, -1 otherwise.
+     */
     public int indexOf(Appointment appointment){
         Node current = head;
         for(int i = 0; i < size; i++){
@@ -125,10 +161,15 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * Gets an Appointment from specified index(position) of a List.
+     * @param pos position(index) of Appointment.
+     * @return found Appointment.
+     */
     public Appointment get(int pos){
 
 //        Validate position(index)
-        validateRemoveGet(pos);
+        validatePos(pos);
 
         Node current = head;
         for(int i = 0; i < pos; i++){
@@ -137,6 +178,10 @@ public class LinkedList {
         return current.getData();
     }
 
+    /**
+     * Returns the last Appointment of the List.
+     * @return null if the List is empty, appointment otherwise.
+     */
     public Appointment tail(){
         if(tail == null){ //Same as empty list
             throw new IndexOutOfBoundsException("No data found in list");
@@ -148,7 +193,7 @@ public class LinkedList {
      * Internal helper method to validate position to get/remove element in a list
      * @param pos position of element to get/be removed
      */
-    private void validateRemoveGet(int pos) {
+    private void validatePos(int pos) {
         if(size == 0 || pos < 0 || pos >= size){
             throw new IndexOutOfBoundsException();
         }
