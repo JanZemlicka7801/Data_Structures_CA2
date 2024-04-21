@@ -72,7 +72,7 @@ class LinkedListTest {
     void testAddAtPosition() {
 //        Adding to start of the list
         list.add(appointment1);
-        assertTrue(list.add(appointment2, 0));
+        assertTrue(list.set(appointment2, 0));
         assertEquals(2, list.size());
         assertEquals(appointment2, list.get(0));
 
@@ -82,7 +82,7 @@ class LinkedListTest {
         list.add(appointment1);
         list.add(appointment3);
 
-        assertTrue(list.add(appointment2, 1));
+        assertTrue(list.set(appointment2, 1));
         assertEquals(3, list.size());
         assertEquals(appointment2, list.get(1));
 
@@ -93,7 +93,7 @@ class LinkedListTest {
         list.add(appointment3);
         list.add(appointment3);
 
-        assertTrue(list.add(appointment2, 1));
+        assertTrue(list.set(appointment2, 1));
         assertEquals(4, list.size());
         assertEquals(appointment2, list.get(1));
 
@@ -103,13 +103,13 @@ class LinkedListTest {
 //        Adding to end of the list
         list.add(appointment1);
         list.add(appointment2);
-        assertTrue(list.add(appointment3, 2));
+        assertTrue(list.set(appointment3, 2));
         assertEquals(3, list.size());
         assertEquals(appointment3, list.get(2));
 
         //Ensure throws exception if trying to add at invalid index/position
-        assertThrows(IndexOutOfBoundsException.class, () -> list.add(appointment3, 4));
-        assertThrows(IndexOutOfBoundsException.class, () -> list.add(appointment3, -1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(appointment3, 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(appointment3, -1));
     }
 
 

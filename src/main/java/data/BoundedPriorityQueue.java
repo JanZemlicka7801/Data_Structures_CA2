@@ -125,7 +125,7 @@ public class BoundedPriorityQueue extends LinkedList {
         } else {
             while (current.getNext() != null) {
                 if (current.getNext().getData().compareTo(toAdd) <= 0){
-                    super.add(toAdd, pos);
+                    super.set(toAdd, pos);
                 }
                 pos++;
             }

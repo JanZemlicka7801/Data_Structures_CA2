@@ -86,7 +86,7 @@ public class LinkedList {
      * @param pos position(index) to insert in/add to a List.
      * @return boolean indicating success of action.
      */
-    public boolean add(Appointment toAdd, int pos){
+    public boolean set(Appointment toAdd, int pos){
 
 //        Validate add position(index)
         if(pos < 0 || pos > size){
