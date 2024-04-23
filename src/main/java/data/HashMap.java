@@ -15,6 +15,7 @@ public class HashMap {
     private LinkedList<Entry>[] map;
     private int size;
 
+
     public HashMap(){
         map = new LinkedList[DEFAULT_CAPACITY];
         size = 0;
@@ -28,8 +29,8 @@ public class HashMap {
         return size;
     }
 
-//    TODO - check if works correctly and effective. (Optimize if space between hashes or collisions too big)
 
+//    TODO - check if works correctly and effective. (Optimize if space between hashes or collisions too big)
     /**
      * Calculates a slot(index) to store the entry in a hashMap.
      * @param key The key which is in result hashed and modded by the size of the array.
@@ -40,6 +41,7 @@ public class HashMap {
         slot %= map.length;
         return slot;
     }
+
 
     /**
      * Removes an entry from a hashMap.
@@ -58,11 +60,13 @@ public class HashMap {
                 if(key.equals(entry.getKey())){
                     oldValue = entry.getValue();
                     map[slot].remove(entry);
+                    size--;
                 }
             }
         }
         return oldValue;
     }
+
 
     /**
      * Gets a Patient from a hashMap.
@@ -85,13 +89,14 @@ public class HashMap {
         return null;
     }
 
+
     /**
      * Stores an entry in a hashMap. Puts a data in a hashMap with collision resolution(LinkedList).
      * @param key Key of the Entry.
      * @param value Value of the Entry.
      * @return Replaced Patient if the specified key was already in a hashMap, null if Entry was stored without replacing any values.
      */
-//    TODO - Optimize and Check workability
+
     public Patient put(String key, Patient value){
 //        First of all, validate key and value
         validateKey(key);
@@ -110,11 +115,8 @@ public class HashMap {
 //        3. Iterate over the List to check if there's duplicate
         for(Entry entry : map[slot]){
             if(entry.getKey().equals(key)){
-                Patient oldValue = entry.getValue();
-//                if so - replace it with the specified value
-                entry.updateValue(value);
-//                and return old value(to see what was replaced) meaning found duplicate key
-                return oldValue;
+//                if so - replace it with the specified value and return old value(to see what was replaced) meaning found duplicate key
+                return entry.updateValue(value);
             }
         }
 //        Otherwise - add Entry to the end of the List
@@ -124,6 +126,7 @@ public class HashMap {
 //        and return null (meaning no duplicate key found)
         return null;
     }
+
 
     /**
      * Checks if there is a specified key in a hashMap.
@@ -169,6 +172,7 @@ public class HashMap {
         return keys;
     }
 
+
     /**
      * Gets all the Patients from a hashMap.
      * @return An array of all Patients in a hashMap.
@@ -195,7 +199,6 @@ public class HashMap {
 
 
 //    Helper methods
-
     /**
      * Helper method to validate keys.
      * @param key Key to validate.
@@ -219,11 +222,6 @@ public class HashMap {
     }
 
 
-
-
-
-
-
     private static class Entry{
 //        Make key final to prevented change/modification of a key.
         private final String key;
@@ -237,7 +235,7 @@ public class HashMap {
             this.value = value;
         }
 
-//        TODO - Important! What type of variable(key) to use? Generic?
+
         /**
          * Gets a key of Entry.
          * @return key of this entry.
