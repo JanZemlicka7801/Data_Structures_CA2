@@ -45,4 +45,20 @@ class BoundedPriorityQueueTest {
         queue.add(appointment1);
         assertTrue(queue.isFull());
     }
+
+    /*
+   Test of count() method
+    */
+    @Test
+    void testCount() {
+        assertEquals(0, queue.count());
+        queue.add(appointment1);
+        queue.offer(appointment2);
+        assertEquals(2, queue.count());
+
+        queue.poll();
+        assertEquals(1, queue.count());
+        queue.remove();
+        assertEquals(0, queue.count());
+    }
 }
