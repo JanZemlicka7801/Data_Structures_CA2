@@ -33,4 +33,16 @@ class BoundedPriorityQueueTest {
         appointment3 = new Appointment("Milena", "Graham", bd3, "Covid", appointmentDate, 2, "Norah Cameron");
         appointment4 = new Appointment("Melany", "Black", bd4, "Covid", appointmentDate, 2, "Stella Melton");
     }
+
+    /*
+    Test of isFull() method
+     */
+    @Test
+    void testIsFull() {
+        assertFalse(queue.isFull());
+        queue.add(appointment1);
+        queue.add(appointment2);
+        queue.add(appointment1);
+        assertTrue(queue.isFull());
+    }
 }
