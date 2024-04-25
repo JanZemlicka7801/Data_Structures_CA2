@@ -89,7 +89,7 @@ public class BoundedPriorityQueue extends LinkedList {
         Node current = head;
         int pos = 0;
 
-        
+
         while (current != null && current.getData().compareTo(toAdd) > 0) {
             current = current.getNext();
             pos++;
@@ -100,6 +100,17 @@ public class BoundedPriorityQueue extends LinkedList {
         return true;
     }
 
+    /**
+     * Safe version of add() method. Tries to add Appointment in a queue.
+     * @param toAdd Appointment to be added.
+     * @return false if a queue is empty or Appointment to be added contains invalid doctor's name, true otherwise
+     */
+    public boolean offer(Appointment toAdd){
+        if (isFull() || !isValidAppointment(toAdd)){
+            return false;
+        }
+        return add(toAdd);
+    }
 
     /**
      * Internal helper method to check if doctor of the appointment to be added is the same as the doctor of the queue.
