@@ -37,4 +37,15 @@ public class BoundedPriorityQueue extends LinkedList{
         }
         return super.remove(0);
     }
+
+    /**
+     * Safe version of peek() method. Returns first element in a queue without deleting it OR null if a queue is empty.
+     * @return first Task object in a queue, if it's not empty.
+     */
+    public Appointment element(){
+        if (isEmpty()) {
+            return null;
+        }
+        return super.get(0);
+    }
 }
