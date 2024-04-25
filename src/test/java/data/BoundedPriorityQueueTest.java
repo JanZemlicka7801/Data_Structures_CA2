@@ -104,4 +104,19 @@ class BoundedPriorityQueueTest {
         assertThrows(IllegalStateException.class, () -> queue.add(appointment1));
         assertThrows(IllegalArgumentException.class, () -> queue.add(appointment3));
     }
+
+    /*
+    Test of poll() method - safe delete
+     */
+    @Test
+    void testPoll() {
+        assertNull(queue.poll());
+
+        queue.add(appointment1);
+        queue.add(appointment2);
+
+        assertEquals(appointment1, queue.poll());
+        assertEquals(appointment2, queue.poll());
+    }
+
 }
