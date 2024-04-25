@@ -44,7 +44,7 @@ public class BoundedPriorityQueue extends LinkedList {
     /**
      * Safe version of peek() method. Returns first element in a queue without deleting it OR null if a queue is empty.
      *
-     * @return first Task object in a queue, if it's not empty.
+     * @return first Appointment object in a queue, if it's not empty.
      */
     public Appointment element() {
         if (isEmpty()) {
@@ -56,7 +56,7 @@ public class BoundedPriorityQueue extends LinkedList {
     /**
      * "Get" method: returns first element in a queue without deleting it.
      *
-     * @return first Task object in a queue, if it's not empty.
+     * @return first Appointment object in a queue, if it's not empty.
      */
     public Appointment peek() {
         if (isEmpty()) {
@@ -67,7 +67,7 @@ public class BoundedPriorityQueue extends LinkedList {
     }
 
     /**
-     * Adds a Task in a queue based on priority.
+     * Adds a Appointment in a queue based on priority.
      *
      * @param toAdd Appointment to be added.
      * @return boolean indicating success of action.
@@ -95,9 +95,18 @@ public class BoundedPriorityQueue extends LinkedList {
             pos++;
         }
 
+
         super.set(toAdd, pos);
 
         return true;
+    }
+
+    /**
+     * Removes and returns a first Appointment in the queue.
+     * @return removed Appointment.
+     */
+    public Appointment remove(){
+        return super.remove(0);
     }
 
     /**
