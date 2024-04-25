@@ -61,4 +61,14 @@ class BoundedPriorityQueueTest {
         queue.remove();
         assertEquals(0, queue.count());
     }
+
+    /*
+    Test of peek() method - get the first element without deleting
+     */
+    @Test
+    void testPeek() {
+        assertThrows(IllegalStateException.class, () -> queue.peek());
+        queue.add(appointment1);
+        assertEquals(appointment1, queue.peek());
+    }
 }
