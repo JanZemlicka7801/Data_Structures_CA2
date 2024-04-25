@@ -90,4 +90,18 @@ class BoundedPriorityQueueTest {
 
 
     }
+
+    /*
+     Test of add() method
+     */
+    @Test
+    void testAdd() {
+        assertTrue(queue.add(appointment1));
+        assertTrue(queue.add(appointment2));
+        assertTrue(queue.add(appointment4));
+
+        assertThrows(NullPointerException.class, () -> queue.add(null));
+        assertThrows(IllegalStateException.class, () -> queue.add(appointment1));
+        assertThrows(IllegalArgumentException.class, () -> queue.add(appointment3));
+    }
 }
