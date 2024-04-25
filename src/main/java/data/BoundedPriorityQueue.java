@@ -16,4 +16,12 @@ public class BoundedPriorityQueue extends LinkedList{
     public boolean isFull(){
         return super.size() == max;
     }
+
+    /**
+     * Gets the size of a queue.
+     * @return size(number) of a queue.
+     */
+    public int count(){
+        return super.size();
+    }
 }
