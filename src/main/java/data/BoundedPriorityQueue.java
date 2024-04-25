@@ -1,5 +1,7 @@
 package data;
 
+import objects.Appointment;
+
 public class BoundedPriorityQueue extends LinkedList{
     private final int max;
     private final String doctorName;
@@ -23,5 +25,16 @@ public class BoundedPriorityQueue extends LinkedList{
      */
     public int count(){
         return super.size();
+    }
+
+    /**
+     * Deletes and returns the first Appointment in a queue.
+     * @return deleted Appointment.
+     */
+    public Appointment poll(){
+        if (isEmpty()){
+            return null;
+        }
+        return super.remove(0);
     }
 }
