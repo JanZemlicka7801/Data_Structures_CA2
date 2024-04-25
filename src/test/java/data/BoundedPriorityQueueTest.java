@@ -119,4 +119,14 @@ class BoundedPriorityQueueTest {
         assertEquals(appointment2, queue.poll());
     }
 
+    /*
+     Test of remove() method
+     */
+    @Test
+    void testRemove() {
+        queue.add(appointment1);
+        assertEquals(appointment1, queue.remove());
+
+        assertThrows(IndexOutOfBoundsException.class, () -> queue.remove());
+    }
 }
