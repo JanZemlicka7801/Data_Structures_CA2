@@ -48,4 +48,16 @@ public class BoundedPriorityQueue extends LinkedList{
         }
         return super.get(0);
     }
+
+    /**
+     * "Get" method: returns first element in a queue without deleting it.
+     * @return first Task object in a queue, if it's not empty.
+     */
+    public Appointment peek(){
+        if (isEmpty()){
+            throw new IllegalStateException("Priority queue is empty");
+        } else {
+            return super.get(0);
+        }
+    }
 }
