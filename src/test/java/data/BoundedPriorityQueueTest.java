@@ -71,4 +71,23 @@ class BoundedPriorityQueueTest {
         queue.add(appointment1);
         assertEquals(appointment1, queue.peek());
     }
+
+    /*
+     Test of offer() method - safe add
+     */
+    @Test
+    void testOffer() {
+        assertTrue(queue.offer(appointment1));
+        assertTrue(queue.offer(appointment2));
+        assertFalse(queue.offer(appointment3));
+
+        assertTrue(queue.offer(appointment4));
+
+        assertEquals(3, queue.count());
+        assertTrue(queue.isFull());
+
+        assertFalse(queue.offer(appointment4));
+
+
+    }
 }
