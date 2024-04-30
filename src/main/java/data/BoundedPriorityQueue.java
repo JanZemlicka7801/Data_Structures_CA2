@@ -12,6 +12,14 @@ public class BoundedPriorityQueue extends LinkedList {
     }
 
     /**
+     * Gets a doctor's name of the queue.
+     * @return doctor namw.
+     */
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    /**
      * Checks if the queue is full. Checks if the queue has reached the maximum size of a set(maximum size is initialized in constructor).
      *
      * @return boolean indicating if a queue is full.
@@ -89,15 +97,12 @@ public class BoundedPriorityQueue extends LinkedList {
         Node current = head;
         int pos = 0;
 
-
         while (current != null && current.getData().compareTo(toAdd) > 0) {
             current = current.getNext();
             pos++;
         }
 
-
         super.set(toAdd, pos);
-
         return true;
     }
 
@@ -122,12 +127,12 @@ public class BoundedPriorityQueue extends LinkedList {
     }
 
     /**
-     * Internal helper method to check if doctor of the appointment to be added is the same as the doctor of the queue.
+     * Helper method to check if doctor of the appointment to be added is the same as the doctor of the queue.
      *
      * @param appointment Appointment to be added.
      * @return boolean indicating success of validation.
      */
-    private boolean isValidAppointment(Appointment appointment) {
+    public boolean isValidAppointment(Appointment appointment) {
         return appointment.getDocName().equalsIgnoreCase(doctorName);
     }
 }
