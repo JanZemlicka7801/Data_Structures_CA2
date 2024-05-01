@@ -25,6 +25,7 @@ public class Appointment implements Comparable<Appointment>{
      */
 
     public Appointment(String pFname, String pLname, LocalDate pDateOfBirth, String issue, LocalDate date, int triage, String docName) {
+        validateDate(date);
         this.pFname = pFname;
         this.pLname = pLname;
         this.pDateOfBirth = pDateOfBirth;
