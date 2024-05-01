@@ -35,6 +35,17 @@ public class Appointment implements Comparable<Appointment>{
     }
 
     /**
+     * Method for validating a date and avoid duplicating.
+     *
+     * @param date The date to be validated.
+     */
+    private void validateDate(LocalDate date) {
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Deadline must be a future date.");
+        }
+    }
+
+    /**
      * Retrieves patient's first name.
      *
      * @return The first name of patient.
@@ -121,6 +132,7 @@ public class Appointment implements Comparable<Appointment>{
      * @param date Date to be set.
      */
     public void setDate(LocalDate date) {
+        validateDate(date);
         this.date = date;
     }
 
