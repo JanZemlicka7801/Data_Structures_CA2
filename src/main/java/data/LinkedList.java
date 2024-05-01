@@ -207,7 +207,6 @@ public class LinkedList {
         public Node(Appointment data){
             this.data = data;
             next = null;
-            previous = null;
         }
 
         public Appointment getData() {
@@ -224,14 +223,6 @@ public class LinkedList {
 
         public void setNext(Node next) {
             this.next = next;
-        }
-
-        public Node getPrevious() {
-            return previous;
-        }
-
-        public void setPrevious(Node previous) {
-            this.previous = previous;
         }
 
     }
